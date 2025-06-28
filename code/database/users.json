@@ -3,7 +3,6 @@
     "id": 1,
     "username": "admin",
     "password": "admin",
-    "_gamer_id": 1,
     "ban": false
   }
 ]

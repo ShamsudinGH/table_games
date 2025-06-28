@@ -1,10 +1,9 @@
 import json
 
+from code.model.Gamer import Gamer
+from code.model.encoders.GamerEncoder import GamerEncoder
 from code.model.errors.UserNotFoundError import UserNotFoundError
-from model.Gamer import Gamer
 from code.model.errors.GamerAvailableError import GamerAvailableError
-from passlib.hash import pbkdf2_sha256
-
 
 
 class GamerRepository:
@@ -33,5 +32,6 @@ class GamerRepository:
         with open("database/gamers.json", "w", encoding='UTF-8') as json_file:
             new_gamer_data = Gamer(id=last_gamer.id+1, gamer_name=gamer_name, nickname=gamer_name, status="user")
             all_gamers.append(new_gamer_data)
-            json.dump(all_gamers, json_file)
+            print(type(all_gamers))
+            json.dump(all_gamers, json_file, cls=GamerEncoder)
         return new_gamer_data
