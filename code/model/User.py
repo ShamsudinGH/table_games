@@ -1,11 +1,11 @@
 # Пользователь
 # TODO Добавить статус аккаунта (заблочен или нет)
 class User:
-    def __init__(self, id: int, username, password, _gamer_id, ban: bool):
+    def __init__(self, id: int, username, password, gamer_id, ban: bool):
         self.id = id
         self.username = username
         self.password = password
-        self.gamer_id = _gamer_id
+        self.gamer_id = gamer_id
         self.ban = ban
 
     def __repr__(self):

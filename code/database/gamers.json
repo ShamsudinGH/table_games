@@ -1,1 +1,14 @@
-[{"id": 1, "gamer_name": "admin", "nickname": "admin", "status": "admin"}, {"id": 2, "gamer_name": "Nickolas", "nickname": "Nickolas", "status": "user"}, {"id": 3, "gamer_name": "John", "nickname": "John", "status": "user"}]
+[
+    {
+        "id": 1,
+        "gamer_name": "admin",
+        "nickname": "admin",
+        "status": "admin"
+    },
+    {
+        "id": 2,
+        "gamer_name": "Lev",
+        "nickname": "Lev",
+        "status": "user"
+    }
+]

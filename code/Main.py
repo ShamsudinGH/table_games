@@ -32,4 +32,4 @@ session_manager = SessionManager()
 print("Игровое меню")
 
 gamer_control = GamerRepository()
-gamer_control.append_gamer("John")
+gamer_control.user_ban(4)

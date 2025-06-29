@@ -1,8 +1,16 @@
 [
-  {
-    "id": 1,
-    "username": "admin",
-    "password": "admin",
-    "ban": false
-  }
+    {
+        "id": 1,
+        "username": "admin",
+        "password": "admin",
+        "gamer_id": 1,
+        "ban": false
+    },
+    {
+        "id": 2,
+        "username": "Lev",
+        "password": "Lev",
+        "gamer_id": 2,
+        "ban": false
+    }
 ]
