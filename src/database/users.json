@@ -11,6 +11,6 @@
         "username": "Lev",
         "password": "Lev",
         "gamer_id": 2,
-        "ban": false
+        "ban": true
     }
 ]

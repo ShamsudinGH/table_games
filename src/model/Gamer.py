@@ -7,3 +7,6 @@ class Gamer:
 
     def __repr__(self):
         return f'Gamer({self.id}, {self.gamer_name}, {self.nickname}, {self.status})'
+
+def create_common_gamer(new_id, name) -> Gamer:
+    return Gamer(id=new_id, gamer_name=name, nickname=name, status="user")

@@ -10,3 +10,6 @@ class User:
 
     def __repr__(self):
         return f'User({self.id}, {self.username}, {self.password}, {self.gamer_id}, {self.ban})'
+
+def create_default_user(new_id, login, password) -> User:
+    return User(id=new_id, username=login, password=password, gamer_id=new_id, ban=False)

@@ -1,8 +1,10 @@
 import AuthManager
-from code.SessionManager import SessionManager
-from code.model.errors.UserNotFoundError import UserNotFoundError
+from src.SessionManager import SessionManager
+from src.UserRepository import UserRepository
+from src.model.errors.UserNotFoundError import UserNotFoundError
 from AuthManager import AuthManager
-from code.GamerRepository import GamerRepository
+from src.GamerRepository import GamerRepository
+from src.utils.ListHelper import last_item
 
 # Создаем экземпляр класса Компонент Авторизации
 auth_manager = AuthManager()
@@ -30,6 +32,19 @@ session_manager = SessionManager()
 #         break
 
 print("Игровое меню")
+game_controller = GamerRepository()
+user_repository = UserRepository()
 
-gamer_control = GamerRepository()
-gamer_control.user_ban(4)
+new_username = "sasha1111111"
+game_controller.append_gamer(new_username)
+user_repository.append_user(new_username, new_username)
+
+print("Search...")
+sasha_data = game_controller.search_gamer_by_name(new_username)
+print(sasha_data)
+sasha_user_id = user_repository.find_user(new_username, new_username)
+print("user_id =", sasha_user_id)
+
+print("Ban...")
+user_repository.ban_user(sasha_user_id)
+print(game_controller.search_gamer_by_name(new_username))

@@ -1,6 +1,6 @@
 import json
 
-from code.model.Gamer import Gamer
+from src.model.Gamer import Gamer
 
 
 class GamerEncoder(json.JSONEncoder):

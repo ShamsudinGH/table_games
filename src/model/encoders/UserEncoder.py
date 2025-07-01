@@ -1,6 +1,6 @@
 import json
 
-from code.model.User import User
+from src.model.User import User
 
 
 class UserEncoder(json.JSONEncoder):

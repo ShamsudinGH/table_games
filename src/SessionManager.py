@@ -1,5 +1,5 @@
 # Компонент Сессии
-from code.utils._SingletonWrapper import singleton
+from src.utils._SingletonWrapper import singleton
 
 
 @singleton
