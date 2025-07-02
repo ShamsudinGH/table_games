@@ -1,4 +1,6 @@
 class Gamer:
+    """Сущность игрока"""
+
     def __init__(self, id: int, gamer_name, nickname, status):
         self.id = id
         self.gamer_name = gamer_name

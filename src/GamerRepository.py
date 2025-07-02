@@ -10,19 +10,19 @@ from src.utils.ListHelper import last_item
 class GamerRepository:
     json_helper = JsonHelper()
 
-    def __get_all_gamers(self):
+    def __get_all_gamers(self) -> list[Gamer]:
         return self.json_helper.read_list_from_json("database/gamers.json", Gamer)
 
-    def search_gamer_by_id(self, id):
+    def search_gamer_by_id(self, game_id) -> Gamer:
         # Загружаем список игроков из БД
         gamers = self.__get_all_gamers()
         for gamer in gamers:
-            if gamer.id == id:
+            if gamer.id == game_id:
                 return gamer
         # Если игрока не нашли, то выбрасываем ошибку
         raise UserNotFoundError
 
-    def search_gamer_by_name(self, user_name):
+    def search_gamer_by_name(self, user_name) -> Gamer:
         # Загружаем список игроков из БД
         gamers = self.__get_all_gamers()
         for gamer in gamers:
@@ -32,7 +32,7 @@ class GamerRepository:
         # Если пользователя не нашли, то выбрасываем ошибку
         raise UserNotFoundError
 
-    def append_gamer(self, gamer_name):
+    def append_gamer(self, gamer_name) -> str:
         all_gamers = self.__get_all_gamers()
         for gamer in all_gamers:
             if gamer.gamer_name == gamer_name:
@@ -42,3 +42,4 @@ class GamerRepository:
         all_gamers.append(new_gamer_data)
 
         self.json_helper.update_json("database/gamers.json", all_gamers, GamerEncoder)
+        return gamer_name
