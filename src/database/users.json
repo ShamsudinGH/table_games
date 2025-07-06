@@ -4,13 +4,15 @@
         "username": "admin",
         "password": "admin",
         "gamer_id": 1,
-        "ban": false
+        "ban": false,
+        "role": "admin"
     },
     {
         "id": 2,
         "username": "Lev",
         "password": "Lev",
         "gamer_id": 2,
-        "ban": true
+        "ban": true,
+        "role": "user"
     }
 ]

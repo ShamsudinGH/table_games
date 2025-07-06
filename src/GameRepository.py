@@ -20,7 +20,7 @@ class GameRepository:
     def __get_all_games(self) -> list[Game]:
         return  self.json_helper.read_list_from_json("database/games.json", Game)
 
-    def search_game(self, game_name) -> Game:
+    def search_game(self, game_name: str) -> Game:
         games = self.__get_all_games()
         for game in games:
             if game.game_name == game_name :
@@ -28,7 +28,7 @@ class GameRepository:
         # Если игрока не нашли, то выбрасываем ошибку
         raise GameNotFoundError
 
-    def append_game(self, game_name, game_price):
+    def append_game(self, game_name: str, game_price: int) -> None:
         all_games = self.__get_all_games()
         for game in all_games:
             if game.game_name == game_name:
@@ -36,4 +36,11 @@ class GameRepository:
         last_game = last_item(all_games)
         new_game_data = create_common_game(last_game.id + 1, game_name, game_price)
         all_games.append(new_game_data)
+        self.json_helper.update_json("database/games.json", all_games, GameEncoder)
+
+    def delete_game(self, game_name: str) -> None:
+        all_games = self.__get_all_games()
+        for game in all_games:
+            if game.game_name == game_name:
+                all_games.remove(game)
         self.json_helper.update_json("database/games.json", all_games, GameEncoder)

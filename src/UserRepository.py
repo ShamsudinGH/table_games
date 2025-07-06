@@ -9,7 +9,7 @@ from src.utils.ListHelper import last_item
 class UserRepository:
     json_helper = JsonHelper()
 
-    def __get_all_users(self):
+    def __get_all_users(self) -> list[User]:
         return self.json_helper.read_list_from_json("database/users.json", User)
 
     def append_user(self, login, password):
@@ -20,7 +20,7 @@ class UserRepository:
 
         self.json_helper.update_json("database/users.json", all_users, UserEncoder)
 
-    def find_user(self, login, password):
+    def find_user(self, login, password) -> int:
         # Загружаем список пользователей из БД
         users = self.__get_all_users()
         for user in users:
@@ -30,7 +30,7 @@ class UserRepository:
         # Если пользователя не нашли, то выбрасываем ошибку
         raise UserNotFoundError
 
-    def ban_user(self, user_id):
+    def ban_user(self, user_id: int) -> None:
         all_users = self.__get_all_users()
         for user in all_users:
             if user.id == user_id:

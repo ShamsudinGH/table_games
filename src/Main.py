@@ -59,3 +59,6 @@ game_controller.append_game(new_gamename, 100)
 print("Search...")
 game_data = game_controller.search_game(new_gamename)
 print(game_data)
+
+print("Delete...")
+game_controller.delete_game(new_gamename)

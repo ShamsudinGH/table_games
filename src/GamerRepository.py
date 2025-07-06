@@ -40,6 +40,5 @@ class GamerRepository:
         last_gamer = last_item(all_gamers)
         new_gamer_data = create_common_gamer(last_gamer.id + 1, gamer_name)
         all_gamers.append(new_gamer_data)
-
         self.json_helper.update_json("database/gamers.json", all_gamers, GamerEncoder)
         return gamer_name
