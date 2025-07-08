@@ -1,11 +1,6 @@
-import AuthManager
-from src.GameRepository import GameRepository
-from src.SessionManager import SessionManager
-from src.UserRepository import UserRepository
-from src.model.errors.UserNotFoundError import UserNotFoundError
+from src.components.GameRepository import GameRepository
+from src.components.SessionManager import SessionManager
 from AuthManager import AuthManager
-from src.GamerRepository import GamerRepository
-from src.utils.ListHelper import last_item
 
 # Создаем экземпляр класса Компонент Авторизации
 auth_manager = AuthManager()

@@ -1,5 +1,5 @@
 # Компонент Авторизации
-from src.UserRepository import UserRepository
+from src.components.UserRepository import UserRepository
 
 class AuthManager:
     # Создаем экземпляр класса Компонент Пользователи
