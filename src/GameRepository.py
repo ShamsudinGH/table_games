@@ -8,7 +8,7 @@
 from src.model.Game import Game, create_common_game
 from src.model.errors.GameNotFoundError import GameNotFoundError
 from src.utils.JsonHelper import JsonHelper
-from src.model.errors.GameAvailableError import GameAvailableError
+from src.model.errors.GameAlreadyExistsError import GameAlreadyExistsError
 from src.utils.ListHelper import last_item
 from src.model.encoders.GameEncoder import GameEncoder
 
@@ -32,7 +32,7 @@ class GameRepository:
         all_games = self.__get_all_games()
         for game in all_games:
             if game.game_name == game_name:
-                raise GameAvailableError(game_name)
+                raise GameAlreadyExistsError(game_name)
         last_game = last_item(all_games)
         new_game_data = create_common_game(last_game.id + 1, game_name, game_price)
         all_games.append(new_game_data)

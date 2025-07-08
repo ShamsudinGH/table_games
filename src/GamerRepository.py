@@ -2,7 +2,7 @@
 from src.model.Gamer import Gamer, create_common_gamer
 from src.model.encoders.GamerEncoder import GamerEncoder
 from src.model.errors.UserNotFoundError import UserNotFoundError
-from src.model.errors.GamerAvailableError import GamerAvailableError
+from src.model.errors.GamerAlreadyExistsError import GamerAlreadyExistsError
 from src.utils.JsonHelper import JsonHelper
 from src.utils.ListHelper import last_item
 
@@ -36,7 +36,7 @@ class GamerRepository:
         all_gamers = self.__get_all_gamers()
         for gamer in all_gamers:
             if gamer.gamer_name == gamer_name:
-                raise GamerAvailableError(gamer_name)
+                raise GamerAlreadyExistsError(gamer_name)
         last_gamer = last_item(all_gamers)
         new_gamer_data = create_common_gamer(last_gamer.id + 1, gamer_name)
         all_gamers.append(new_gamer_data)
