@@ -2,13 +2,11 @@
     {
         "id": 1,
         "gamer_name": "admin",
-        "nickname": "admin",
-        "status": "admin"
+        "nickname": "admin"
     },
     {
         "id": 2,
         "gamer_name": "Lev",
-        "nickname": "Lev",
-        "status": "user"
+        "nickname": "Lev"
     }
 ]
