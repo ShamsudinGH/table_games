@@ -38,7 +38,7 @@ class UserRepository:
 
     def is_role_admin(self, user_id: int) -> bool:
         role = self.__get_role__(user_id)
-        return role == Role.ROLE_ADMIN.value
+        return role == Role.ROLE_ADMIN
 
     def __get_all_users(self) -> list[User]:
         return self.json_helper.read_list_from_json("database/users.json", User)
