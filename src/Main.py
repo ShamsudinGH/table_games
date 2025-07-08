@@ -1,12 +1,13 @@
-from src.components.GameRepository import GameRepository
-from src.components.SessionManager import SessionManager
-from AuthManager import AuthManager
+from src.components.GamerRepository import GamerRepository
+from src.components.UserRepository import UserRepository
 
-# Создаем экземпляр класса Компонент Авторизации
-auth_manager = AuthManager()
-# Создаем экземпляр класса Компонент Сессии
-session_manager = SessionManager()
-
+# # Создаем экземпляр класса Компонент Авторизации
+# auth_manager = AuthManager()
+# # Создаем экземпляр класса Компонент Сессии
+# session_manager = SessionManager()
+# # Создаем экземпляр класса Компонент Пользователь
+# user_repository = UserRepository()
+#
 # while True:
 #     # Запрашиваем логин и пароль
 #     login = input("Login: ")
@@ -26,34 +27,30 @@ session_manager = SessionManager()
 #         # Если пользователь был найден, то сохраняем его id в Компонент Сессии
 #         session_manager.set_user(user_id)
 #         break
-
-# print("Игровое меню")
-# game_controller = GamerRepository()
-# user_repository = UserRepository()
 #
-# new_username = "sasha1111111"
-# game_controller.append_gamer(new_username)
-# user_repository.append_user(new_username, new_username)
-#
-# print("Search...")
-# sasha_data = game_controller.search_gamer_by_name(new_username)
-# print(sasha_data)
-# sasha_user_id = user_repository.find_user(new_username, new_username)
-# print("user_id =", sasha_user_id)
-#
-# print("Ban...")
-# user_repository.ban_user(sasha_user_id)
-# print(game_controller.search_gamer_by_name(new_username))
+# user_id = session_manager.get_user()
+# if user_repository.is_role_admin(user_id):
+#     AdminPanel().run()
+# else:
+#     UserPanel().run()
 
-print("Игровое меню")
-game_controller = GameRepository()
 
-new_gamename = "Manchkin"
-game_controller.append_game(new_gamename, 100)
+user_repository = UserRepository()
+gamer_controller = GamerRepository()
+
+new_username = "sasha1111111"
+# gamer_controller.append_gamer(new_username)
+user_repository.append_user(new_username, new_username)
 
 print("Search...")
-game_data = game_controller.search_game(new_gamename)
-print(game_data)
+# sasha_data = gamer_controller.search_gamer_by_name(new_username)
+# print(sasha_data)
+sasha_user_id = user_repository.find_user(new_username, new_username)
+print("user_id =", sasha_user_id)
 
-print("Delete...")
-game_controller.delete_game(new_gamename)
+print(user_repository.is_role_admin(sasha_user_id))
+
+
+# print("Ban...")
+# user_repository.ban_user(sasha_user_id)
+# print(gamer_controller.search_gamer_by_name(new_username))

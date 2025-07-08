@@ -1,5 +1,5 @@
 # Компонент пользователи
-from src.model.User import User, create_default_user
+from src.model.User import User, create_default_user, Role
 from src.model.encoders.UserEncoder import UserEncoder
 from src.model.errors.UserNotFoundError import UserNotFoundError
 from src.utils.JsonHelper import JsonHelper
@@ -8,9 +8,6 @@ from src.utils.ListHelper import last_item
 
 class UserRepository:
     json_helper = JsonHelper()
-
-    def __get_all_users(self) -> list[User]:
-        return self.json_helper.read_list_from_json("database/users.json", User)
 
     def append_user(self, login, password):
         all_users = self.__get_all_users()
@@ -37,4 +34,18 @@ class UserRepository:
                 user.ban = True
                 self.json_helper.update_json("database/users.json", all_users, UserEncoder)
                 return None
+        raise UserNotFoundError
+
+    def is_role_admin(self, user_id: int) -> bool:
+        role = self.__get_role__(user_id)
+        return role == Role.ROLE_ADMIN.value
+
+    def __get_all_users(self) -> list[User]:
+        return self.json_helper.read_list_from_json("database/users.json", User)
+
+    def __get_role__(self, user_id: int) -> Role:
+        all_users = self.__get_all_users()
+        for user in all_users:
+            if user.id == user_id:
+                return user.role
         raise UserNotFoundError
