@@ -1,4 +1,5 @@
 # Компонент игроки
+from src import DATABASE_GAMERS_JSON
 from src.model.Gamer import Gamer, create_common_gamer
 from src.model.encoders.GamerEncoder import GamerEncoder
 from src.model.errors.UserNotFoundError import UserNotFoundError
@@ -11,7 +12,7 @@ class GamerRepository:
     json_helper = JsonHelper()
 
     def __get_all_gamers(self) -> list[Gamer]:
-        return self.json_helper.read_list_from_json("database/gamers.json", Gamer)
+        return self.json_helper.read_list_from_json(DATABASE_GAMERS_JSON, Gamer)
 
     def search_gamer_by_id(self, game_id) -> Gamer:
         # Загружаем список игроков из БД
@@ -40,5 +41,5 @@ class GamerRepository:
         last_gamer = last_item(all_gamers)
         new_gamer_data = create_common_gamer(last_gamer.id + 1, gamer_name)
         all_gamers.append(new_gamer_data)
-        self.json_helper.update_json("database/gamers.json", all_gamers, GamerEncoder)
+        self.json_helper.update_json(DATABASE_GAMERS_JSON, all_gamers, GamerEncoder)
         return gamer_name

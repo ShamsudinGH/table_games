@@ -4,7 +4,7 @@
 # +список_игр(): List<Игра>
 # +удалить_игру(название)
 # +добавить_игру(название, стоимость)
-
+from src import DATABASE_GAMES_JSON
 from src.model.Game import Game, create_common_game
 from src.model.errors.GameNotFoundError import GameNotFoundError
 from src.utils.JsonHelper import JsonHelper
@@ -17,11 +17,11 @@ class GameRepository:
 
     json_helper = JsonHelper()
 
-    def __get_all_games(self) -> list[Game]:
-        return  self.json_helper.read_list_from_json("database/games.json", Game)
+    def get_all_games(self) -> list[Game]:
+        return self.json_helper.read_list_from_json(DATABASE_GAMES_JSON, Game)
 
     def search_game(self, game_name: str) -> Game:
-        games = self.__get_all_games()
+        games = self.get_all_games()
         for game in games:
             if game.game_name == game_name :
                 return game
@@ -29,18 +29,18 @@ class GameRepository:
         raise GameNotFoundError
 
     def append_game(self, game_name: str, game_price: int) -> None:
-        all_games = self.__get_all_games()
+        all_games = self.get_all_games()
         for game in all_games:
             if game.game_name == game_name:
                 raise GameAlreadyExistsError(game_name)
         last_game = last_item(all_games)
         new_game_data = create_common_game(last_game.id + 1, game_name, game_price)
         all_games.append(new_game_data)
-        self.json_helper.update_json("database/games.json", all_games, GameEncoder)
+        self.json_helper.update_json(DATABASE_GAMES_JSON, all_games, GameEncoder)
 
     def delete_game(self, game_name: str) -> None:
-        all_games = self.__get_all_games()
+        all_games = self.get_all_games()
         for game in all_games:
             if game.game_name == game_name:
                 all_games.remove(game)
-        self.json_helper.update_json("database/games.json", all_games, GameEncoder)
+        self.json_helper.update_json(DATABASE_GAMES_JSON, all_games, GameEncoder)

@@ -1,4 +1,5 @@
 # Компонент пользователи
+from src import DATABASE_USERS_JSON
 from src.model.User import User, create_default_user, Role
 from src.model.encoders.UserEncoder import UserEncoder
 from src.model.errors.UserNotFoundError import UserNotFoundError
@@ -15,7 +16,7 @@ class UserRepository:
         new_user_data = create_default_user(last_user.id + 1, login, password)
         all_users.append(new_user_data)
 
-        self.json_helper.update_json("database/users.json", all_users, UserEncoder)
+        self.json_helper.update_json(DATABASE_USERS_JSON, all_users, UserEncoder)
 
     def find_user(self, login, password) -> int:
         # Загружаем список пользователей из БД
@@ -32,7 +33,7 @@ class UserRepository:
         for user in all_users:
             if user.id == user_id:
                 user.ban = True
-                self.json_helper.update_json("database/users.json", all_users, UserEncoder)
+                self.json_helper.update_json(DATABASE_USERS_JSON, all_users, UserEncoder)
                 return None
         raise UserNotFoundError
 
@@ -41,7 +42,7 @@ class UserRepository:
         return role == Role.ROLE_ADMIN
 
     def __get_all_users(self) -> list[User]:
-        return self.json_helper.read_list_from_json("database/users.json", User)
+        return self.json_helper.read_list_from_json(DATABASE_USERS_JSON, User)
 
     def __get_role__(self, user_id: int) -> Role:
         all_users = self.__get_all_users()
