@@ -14,6 +14,9 @@ class StateMachine:
         return self.state.run()
 
     def change_state(self, state: State):
+        if state is None:
+            raise WrongStateError
+
         if self.__is_valid_change__(state):
             self.state = state
         else:
