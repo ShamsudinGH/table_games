@@ -1,12 +1,16 @@
+from src.components.GamerRepository import GamerRepository
 from src.panels.state_machine.State import State
 
 
 class Gamers(State):
+    gamers_repository = GamerRepository()
+
     def get_name(self) -> str:
         return "Gamers"
 
     def run(self):
-        print("Список игроков...")
+        for gamer in self.gamers_repository.get_all_gamers():
+            print(gamer)
         print("[0] Назад")
 
         action = input("Выберите действие: ")

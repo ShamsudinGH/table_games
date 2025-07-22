@@ -11,12 +11,12 @@ from src.utils.ListHelper import last_item
 class GamerRepository:
     json_helper = JsonHelper()
 
-    def __get_all_gamers(self) -> list[Gamer]:
+    def get_all_gamers(self) -> list[Gamer]:
         return self.json_helper.read_list_from_json(DATABASE_GAMERS_JSON, Gamer)
 
     def search_gamer_by_id(self, game_id) -> Gamer:
         # Загружаем список игроков из БД
-        gamers = self.__get_all_gamers()
+        gamers = self.get_all_gamers()
         for gamer in gamers:
             if gamer.id == game_id:
                 return gamer
@@ -25,7 +25,7 @@ class GamerRepository:
 
     def search_gamer_by_name(self, user_name) -> Gamer:
         # Загружаем список игроков из БД
-        gamers = self.__get_all_gamers()
+        gamers = self.get_all_gamers()
         for gamer in gamers:
             if gamer.gamer_name == user_name:
                 # Если логин и пароль пользователя совпадает с тем что мы передали, то возвращаем id
@@ -34,7 +34,7 @@ class GamerRepository:
         raise UserNotFoundError
 
     def append_gamer(self, gamer_name) -> str:
-        all_gamers = self.__get_all_gamers()
+        all_gamers = self.get_all_gamers()
         for gamer in all_gamers:
             if gamer.gamer_name == gamer_name:
                 raise GamerAlreadyExistsError(gamer_name)
