@@ -1,12 +1,12 @@
 [
     {
         "id": 1,
-        "gamer_name": "admin",
+        "gamer_name": "Olga Topuhina",
         "nickname": "admin"
     },
     {
         "id": 2,
-        "gamer_name": "Lev",
+        "gamer_name": "Stanislav Leontiev",
         "nickname": "Lev"
     }
 ]

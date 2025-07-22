@@ -12,7 +12,7 @@
         "username": "Lev",
         "password": "Lev",
         "gamer_id": 2,
-        "ban": true,
+        "ban": false,
         "role": "role_user"
     }
 ]

@@ -31,10 +31,8 @@ class UserRepository:
     def is_user_banned(self, id: int) -> bool:
         users = self.__get_all_users()
         for user in users:
-            if user.id == id and user.ban == True:
-                return True
-            elif user.id == id and user.ban == False:
-                return False
+            if user.id == id:
+                return user.ban
         raise UserNotFoundError
 
     def ban_user(self, user_id: int) -> None:

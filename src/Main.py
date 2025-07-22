@@ -1,6 +1,7 @@
 from src.components.AuthManager import AuthManager
 from src.components.SessionManager import SessionManager
 from src.components.UserRepository import UserRepository
+from src.model.errors.UserBannedError import UserBannedError
 from src.model.errors.UserNotFoundError import UserNotFoundError
 from src.panels.admin.AdminPanel import AdminPanel
 from src.panels.user.UserPanel import UserPanel
@@ -24,6 +25,8 @@ while True:
         user_id = auth_manager.authorize(login, password)
     except UserNotFoundError:
         print("Неверный логин или пароль")
+    except UserBannedError:
+        print("Пользователь забанен")
     except:
         print("Неизвестная ошибка при авторизации")
 
