@@ -10,7 +10,7 @@ class Gamers(State):
 
     def run(self):
         for gamer in self.gamers_repository.get_all_gamers():
-            print(gamer)
+            print(f'{gamer.id}. {gamer.nickname}')
         print("[0] Назад")
 
         action = input("Выберите действие: ")

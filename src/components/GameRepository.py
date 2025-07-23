@@ -44,3 +44,6 @@ class GameRepository:
             if game.game_name == game_name:
                 all_games.remove(game)
         self.json_helper.update_json(DATABASE_GAMES_JSON, all_games, GameEncoder)
+
+    def edit_game(self, game_name: str, game_price: int) -> None:
+        pass

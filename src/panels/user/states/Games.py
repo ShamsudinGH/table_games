@@ -10,7 +10,7 @@ class Games(State):
 
     def run(self):
         for game in self.games_repository.get_all_games():
-            print(game)
+            print(f'{game.id}. {game.game_name} - {game.game_price}руб')
         print("[0] Назад")
 
         action = input("Выберите действие: ")
