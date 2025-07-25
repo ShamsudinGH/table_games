@@ -6,14 +6,19 @@ class AdminPanel:
 
     source_destination_map: dict[str, list[str]] = {
         "Initial": ["Games", "Gamers", "Exit"],
-        "Games": ["Add_Game", "Edit_Game", "Delete_Game", "Initial"],
-        "Gamers": ["Add_Gamer", "Ban_User", "Initial"],
+        "Games": ["AddGame", "EditGame", "DeleteGame", "Initial"],
+        "AddGame":["Games"],
+        "EditGame":["Games"],
+        "DeleteGame":["Games"],
+        "Gamers": ["AddGamer", "BanUser", "Initial"],
+        "AddGamer":["Gamers"],
+        "BanUser":["Gamers"],
         "Exit": []
     }
     state_machine = StateMachine(initial_state=Initial(), source_destination_map=source_destination_map)
 
     def run(self):
-        print("-" * 45)
         while True:
+            print("-" * 45)
             new_state = self.state_machine.run_current_state()
             self.state_machine.change_state(new_state)

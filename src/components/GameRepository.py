@@ -38,10 +38,10 @@ class GameRepository:
         all_games.append(new_game_data)
         self.json_helper.update_json(DATABASE_GAMES_JSON, all_games, GameEncoder)
 
-    def delete_game(self, game_name: str) -> None:
+    def delete_game(self, game_id: int) -> None:
         all_games = self.get_all_games()
         for game in all_games:
-            if game.game_name == game_name:
+            if game.id == game_id:
                 all_games.remove(game)
         self.json_helper.update_json(DATABASE_GAMES_JSON, all_games, GameEncoder)
 
