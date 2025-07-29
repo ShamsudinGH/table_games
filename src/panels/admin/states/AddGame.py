@@ -11,8 +11,12 @@ class AddGame(State):
     def run(self):
         new_game_name = input("Введите название новой игры: ")
         new_game_price = int(input("Введите цену новой игры: "))
-        self.game_repository.append_game(new_game_name, new_game_price)
-        print("[0] Назад")
+        try:
+            self.game_repository.append_game(new_game_name, new_game_price)
+            print(f"{"-" * 45}\nИгра успешно добавлена")
+        except Exception as e:
+            print(e)
+        print(f"[0] Назад")
 
         action = input("Выберите действие: ")
         if action == "0":

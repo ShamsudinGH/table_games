@@ -24,6 +24,6 @@ class Games(State):
             from src.panels.admin.states.EditGame import EditGame
             return EditGame()
         elif action == "3":
-            from src.panels.admin.states.Delete_Game import Delete_Game
-            return Delete_Game()
+            from src.panels.admin.states.DeleteGame import DeleteGame
+            return DeleteGame()
         return None
