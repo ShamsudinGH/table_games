@@ -35,3 +35,4 @@ UserRepository
 -------------------------- ГЛОБАЛЬНЫЕ ПРАВКИ --------------------------
 1) Упростить source_destinations_map: dict[str, list[str]] = {} до source_destinations_map: dict[State, list[State]] = {}
 2) Сделать AuthManager секьюрным
+3) Перевести Database на SQL
