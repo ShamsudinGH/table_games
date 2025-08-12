@@ -43,3 +43,7 @@ class GamerRepository:
         all_gamers.append(new_gamer_data)
         self.json_helper.update_json(DATABASE_GAMERS_JSON, all_gamers, GamerEncoder)
         return gamer_name
+
+    def get_profile_data(self, gamer_id) -> dict:
+        profile = self.search_gamer_by_id(gamer_id)
+        return {"id": profile.id, "nickname": profile.nickname}

@@ -25,7 +25,15 @@ class GameRepository:
         for game in games:
             if game.game_name == game_name :
                 return game
-        # Если игрока не нашли, то выбрасываем ошибку
+        # Если игру не нашли, то выбрасываем ошибку
+        raise GameNotFoundError
+
+    def search_game_by_id(self, game_id: int) -> Game:
+        games = self.get_all_games()
+        for game in games:
+            if game.id == game_id :
+                return game
+        # Если игру не нашли, то выбрасываем ошибку
         raise GameNotFoundError
 
     def append_game(self, game_name: str, game_price: int) -> None:
@@ -48,5 +56,11 @@ class GameRepository:
         self.json_helper.update_json(DATABASE_GAMES_JSON, all_games, GameEncoder)
         return game_deleted
 
-    def edit_game(self, game_name: str, game_price: int) -> None:
+    def edit_game(self, game_id: int, game_name: str, game_price: int) -> None:
+        all_games = self.get_all_games()
+        for game in all_games:
+            if game.id == game_id:
+                game.game_name = game_name
+                game.game_price = game_price
+        self.json_helper.update_json(DATABASE_GAMES_JSON, all_games, GameEncoder)
         pass

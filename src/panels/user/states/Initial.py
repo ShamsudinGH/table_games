@@ -2,7 +2,7 @@ from src.panels.state_machine.State import State
 
 class Initial(State):
     def get_name(self) -> str:
-        return "Initial"
+        return "User_Initial"
 
     def run(self):
         print("Игровое меню (игрок)")

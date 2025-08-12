@@ -8,6 +8,7 @@ class Initial(State):
         print("Игровое меню (Админ)")
         print("[1] Игры")
         print("[2] Игроки")
+        print("[3] Профиль")
         print("[0] Выход")
 
         action = input("Выберите действие: ")
@@ -17,6 +18,9 @@ class Initial(State):
         elif action == "2":
             from src.panels.admin.states.Gamers import Gamers
             return Gamers()
+        elif action == "3":
+            from src.panels.admin.states.Profile import Profile
+            return Profile()
         elif action == "0":
             from src.panels.admin.states.Exit import Exit
             return Exit()

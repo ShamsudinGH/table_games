@@ -28,10 +28,10 @@ class UserRepository:
         # Если пользователя не нашли, то выбрасываем ошибку
         raise UserNotFoundError
 
-    def is_user_banned(self, id: int) -> bool:
+    def is_user_banned(self, user_id: int) -> bool:
         users = self.__get_all_users()
         for user in users:
-            if user.id == id:
+            if user.id == user_id:
                 return user.ban
         raise UserNotFoundError
 

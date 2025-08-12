@@ -6,7 +6,12 @@
     },
     {
         "id": 2,
-        "game_name": "Manchkin",
-        "game_price": 110
+        "game_name": "Manch",
+        "game_price": 100
+    },
+    {
+        "id": 3,
+        "game_name": "uno",
+        "game_price": 250
     }
 ]

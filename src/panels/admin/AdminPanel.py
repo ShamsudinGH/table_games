@@ -5,7 +5,7 @@ from src.panels.state_machine.StateMachine import StateMachine
 class AdminPanel:
 
     source_destination_map: dict[str, list[str]] = {
-        "Initial": ["Games", "Gamers", "Exit"],
+        "Initial": ["Games", "Gamers", "Profile", "Exit"],
         "Games": ["AddGame", "EditGame", "DeleteGame", "Initial"],
         "AddGame":["Games"],
         "EditGame":["Games"],
@@ -13,6 +13,7 @@ class AdminPanel:
         "Gamers": ["AddGamer", "BanUser", "Initial"],
         "AddGamer":["Gamers"],
         "BanUser":["Gamers"],
+        "Profile":["Initial"],
         "Exit": []
     }
     state_machine = StateMachine(initial_state=Initial(), source_destination_map=source_destination_map)

@@ -5,9 +5,10 @@ from src.panels.user.states.Initial import Initial
 class UserPanel:
     # Карта навигации (что куда может переходить)
     source_destination_map: dict[str, list[str]] = {
-        "Initial": ["Games", "Gamers", "Exit"],
+        "Initial": ["Games", "Gamers", "AuthorizationState"],
         "Games": ["Initial"],
         "Gamers": ["Initial"],
+        "AuthorizationState": ["Initial", "Exit"],
         "Exit": []
     }
     # Создание стейт-машины
