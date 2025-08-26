@@ -8,5 +8,10 @@
         "id": 2,
         "gamer_name": "Stanislav Leontiev",
         "nickname": "Lev"
+    },
+    {
+        "id": 3,
+        "gamer_name": "Anna",
+        "nickname": "Anna"
     }
 ]

@@ -43,8 +43,13 @@ from src.panels.user.UserPanel import UserPanel
 # else:
 #     UserPanel().run()
 
-authorization_state = AuthorizationState()
-state_machine = StateMachine(initial_state=AuthorizationState(), source_destination_map=source_destination_map)
+
+state_machine = StateMachine(initial_state=AuthorizationState(),
+                             source_destination_map=AuthorizationState.source_destination_map)
+while True:
+    print("-" * 45)
+    new_state = state_machine.run_current_state()
+    state_machine.change_state(new_state)
 
 # user_repository = UserRepository()
 # gamer_controller = GamerRepository()

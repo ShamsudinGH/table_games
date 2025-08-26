@@ -18,7 +18,7 @@ class Profile(State):
 
         action = input("Выберите действие: ")
         if action == "0":
-            from src.panels.admin.states.Initial import Initial
-            return Initial()
+            from src.panels.admin.states.AdminInitial import AdminInitial
+            return AdminInitial()
         return None
 

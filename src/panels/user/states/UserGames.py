@@ -6,7 +6,7 @@ class Games(State):
     games_repository = GameRepository()
 
     def get_name(self) -> str:
-        return "Games"
+        return "UserGames"
 
     def run(self):
         for game in self.games_repository.get_all_games():
@@ -15,6 +15,6 @@ class Games(State):
 
         action = input("Выберите действие: ")
         if action == "0":
-            from src.panels.user.states.Initial import Initial
+            from src.panels.user.states.UserInitial import Initial
             return Initial()
         return None

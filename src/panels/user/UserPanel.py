@@ -1,14 +1,13 @@
 from src.panels.state_machine.StateMachine import StateMachine
-from src.panels.user.states.Initial import Initial
+from src.panels.user.states.UserInitial import Initial
 
 
 class UserPanel:
     # Карта навигации (что куда может переходить)
     source_destination_map: dict[str, list[str]] = {
-        "Initial": ["Games", "Gamers", "AuthorizationState"],
+        "Initial": ["Games", "Gamers", "Exit"],
         "Games": ["Initial"],
         "Gamers": ["Initial"],
-        "AuthorizationState": ["Initial", "Exit"],
         "Exit": []
     }
     # Создание стейт-машины

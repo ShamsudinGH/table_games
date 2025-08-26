@@ -2,11 +2,11 @@ from src.components.GamerRepository import GamerRepository
 from src.panels.state_machine.State import State
 
 
-class Gamers(State):
+class AdminGamers(State):
     gamers_repository = GamerRepository()
 
     def get_name(self) -> str:
-        return "Gamers"
+        return "AdminGamers"
 
     def run(self):
         for gamer in self.gamers_repository.get_all_gamers():
@@ -16,8 +16,8 @@ class Gamers(State):
 
         action = input("Выберите действие: ")
         if action == "0":
-            from src.panels.admin.states.Initial import Initial
-            return Initial()
+            from src.panels.admin.states.AdminInitial import AdminInitial
+            return AdminInitial()
         elif action == "1":
             from src.panels.admin.states.AddGamer import AddGamer
             return AddGamer()

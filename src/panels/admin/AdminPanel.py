@@ -1,4 +1,4 @@
-from src.panels.admin.states.Initial import Initial
+from src.panels.admin.states.AdminInitial import AdminInitial
 from src.panels.state_machine.StateMachine import StateMachine
 
 
@@ -16,7 +16,7 @@ class AdminPanel:
         "Profile":["Initial"],
         "Exit": []
     }
-    state_machine = StateMachine(initial_state=Initial(), source_destination_map=source_destination_map)
+    state_machine = StateMachine(initial_state=AdminInitial(), source_destination_map=source_destination_map)
 
     def run(self):
         while True:

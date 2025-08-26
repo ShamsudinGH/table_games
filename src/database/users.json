@@ -14,5 +14,13 @@
         "gamer_id": 2,
         "ban": false,
         "role": "role_user"
+    },
+    {
+        "id": 3,
+        "username": "Ann",
+        "password": "Ann",
+        "gamer_id": 3,
+        "ban": false,
+        "role": "role_user"
     }
 ]

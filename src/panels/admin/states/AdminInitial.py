@@ -1,8 +1,9 @@
+
 from src.panels.state_machine.State import State
 
-class Initial(State):
+class AdminInitial(State):
     def get_name(self) -> str:
-        return "Initial"
+        return "AdminInitial"
 
     def run(self):
         print("Игровое меню (Админ)")
@@ -13,15 +14,15 @@ class Initial(State):
 
         action = input("Выберите действие: ")
         if action == "1":
-            from src.panels.admin.states.Games import Games
-            return Games()
+            from src.panels.admin.states.AdminGames import AdminGames
+            return AdminGames()
         elif action == "2":
-            from src.panels.admin.states.Gamers import Gamers
-            return Gamers()
+            from src.panels.admin.states.AdminGamers import AdminGamers
+            return AdminGamers()
         elif action == "3":
             from src.panels.admin.states.Profile import Profile
             return Profile()
         elif action == "0":
-            from src.panels.admin.states.Exit import Exit
-            return Exit()
+            from src.panels.AuthorizationState import AuthorizationState
+            return AuthorizationState()
         return None

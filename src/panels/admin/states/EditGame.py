@@ -22,6 +22,6 @@ class EditGame(State):
 
         action = input("Выберите действие: ")
         if action == "0":
-            from src.panels.admin.states.Games import Games
-            return Games()
+            from src.panels.admin.states.AdminGames import AdminGames
+            return AdminGames()
         return None

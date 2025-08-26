@@ -6,7 +6,7 @@ class Gamers(State):
     gamers_repository = GamerRepository()
 
     def get_name(self) -> str:
-        return "Gamers"
+        return "UserGamers"
 
     def run(self):
         for gamer in self.gamers_repository.get_all_gamers():
@@ -15,6 +15,6 @@ class Gamers(State):
 
         action = input("Выберите действие: ")
         if action == "0":
-            from src.panels.user.states.Initial import Initial
+            from src.panels.user.states.UserInitial import Initial
             return Initial()
         return None

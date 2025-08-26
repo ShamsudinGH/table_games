@@ -1,0 +1,37 @@
+{
+  "AdminInitial": [
+    "AdminGames",
+    "AdminGamers",
+    "Profile",
+    "AuthorizationState"
+  ],
+  "AdminGames": [
+    "AddGame",
+    "EditGame",
+    "DeleteGame",
+    "AdminInitial"
+  ],
+  "AddGame": [
+    "AdminGames"
+  ],
+  "EditGame": [
+    "AdminGames"
+  ],
+  "DeleteGame": [
+    "AdminGames"
+  ],
+  "AdminGamers": [
+    "AddGamer",
+    "BanUser",
+    "AdminInitial"
+  ],
+  "AddGamer": [
+    "AdminGamers"
+  ],
+  "BanUser": [
+    "AdminGamers"
+  ],
+  "Profile": [
+    "AdminInitial"
+  ]
+}

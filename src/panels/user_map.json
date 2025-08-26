@@ -1,0 +1,19 @@
+{
+  "AuthorizationState": [
+    "AdminInitial",
+    "UserInitial",
+    "Exit"
+  ],
+  "UserInitial": [
+    "UserGames",
+    "UserGamers",
+    "AuthorizationState"
+  ],
+  "UserGames": [
+    "UserInitial"
+  ],
+  "UserGamers": [
+    "UserInitial"
+  ],
+  "Exit": []
+}
