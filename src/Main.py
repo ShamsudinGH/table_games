@@ -1,12 +1,9 @@
-from src.components.AuthManager import AuthManager
-from src.components.SessionManager import SessionManager
-from src.components.UserRepository import UserRepository
-from src.model.errors.UserBannedError import UserBannedError
-from src.model.errors.UserNotFoundError import UserNotFoundError
 from src.panels.AuthorizationState import AuthorizationState
-from src.panels.admin.AdminPanel import AdminPanel
+from src.panels.admin.navigation_graph import ADMIN_NAVIGATION_GRAPH
+from src.panels.basic.navigation_graph import BASIC_NAVIGATION_GRAPH
 from src.panels.state_machine.StateMachine import StateMachine
-from src.panels.user.UserPanel import UserPanel
+
+from src.panels.user.navigation_graph import USER_NAVIGATION_GRAPH
 
 # Создаем экземпляр класса Компонент Авторизации
 # auth_manager = AuthManager()
@@ -43,9 +40,14 @@ from src.panels.user.UserPanel import UserPanel
 # else:
 #     UserPanel().run()
 
+source_destination_map = {
+    **ADMIN_NAVIGATION_GRAPH,
+    **USER_NAVIGATION_GRAPH,
+    **BASIC_NAVIGATION_GRAPH,
+}
 
 state_machine = StateMachine(initial_state=AuthorizationState(),
-                             source_destination_map=AuthorizationState.source_destination_map)
+                             source_destination_map=source_destination_map)
 while True:
     print("-" * 45)
     new_state = state_machine.run_current_state()

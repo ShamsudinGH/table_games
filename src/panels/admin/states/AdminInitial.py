@@ -1,4 +1,3 @@
-
 from src.panels.state_machine.State import State
 
 class AdminInitial(State):
@@ -23,6 +22,6 @@ class AdminInitial(State):
             from src.panels.admin.states.Profile import Profile
             return Profile()
         elif action == "0":
-            from src.panels.AuthorizationState import AuthorizationState
-            return AuthorizationState()
+            from src.panels.LogoutState import LogoutState
+            return LogoutState()
         return None

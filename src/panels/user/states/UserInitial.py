@@ -18,6 +18,6 @@ class Initial(State):
             from src.panels.user.states.UserGamers import Gamers
             return Gamers()
         elif action == "0":
-            from src.panels.AuthorizationState import AuthorizationState
-            return AuthorizationState()
+            from src.panels.LogoutState import LogoutState
+            return LogoutState()
         return None
