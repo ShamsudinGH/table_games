@@ -15,6 +15,6 @@ class Gamers(State):
 
         action = input("Выберите действие: ")
         if action == "0":
-            from src.panels.user.states.UserInitial import Initial
-            return Initial()
+            from src.panels.user.states.UserInitial import UserInitial
+            return UserInitial()
         return None

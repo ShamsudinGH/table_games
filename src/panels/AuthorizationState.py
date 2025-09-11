@@ -5,7 +5,7 @@ from src.model.errors.UserBannedError import UserBannedError
 from src.model.errors.UserNotFoundError import UserNotFoundError
 from src.panels.admin.states.AdminInitial import AdminInitial
 from src.panels.state_machine.State import State
-from src.panels.user.states.UserInitial import Initial as UserInitial
+from src.panels.user.states.UserInitial import UserInitial as UserInitial
 
 
 class AuthorizationState(State):

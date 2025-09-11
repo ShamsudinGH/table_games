@@ -13,5 +13,10 @@
         "id": 3,
         "gamer_name": "Anna",
         "nickname": "Anna"
+    },
+    {
+        "id": 4,
+        "gamer_name": "0",
+        "nickname": "0"
     }
 ]

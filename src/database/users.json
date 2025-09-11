@@ -22,5 +22,13 @@
         "gamer_id": 3,
         "ban": false,
         "role": "role_user"
+    },
+    {
+        "id": 4,
+        "username": "admin",
+        "password": "admin",
+        "gamer_id": 4,
+        "ban": true,
+        "role": "role_user"
     }
 ]
