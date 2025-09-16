@@ -11,4 +11,5 @@ class LogoutState(State):
 
     def run(self) -> 'State':
         self.session_manager.logout()
+        print("Производится выход...")
         return AuthorizationState()

@@ -1,12 +1,10 @@
-from src.panels.AuthorizationState import AuthorizationState
 from src.panels.LogoutState import LogoutState
+from src.panels.state_machine.SessionLifecycleHandler import SessionLifecycleHandler
 from src.panels.state_machine.State import State
-from src.panels.state_machine.Timer import Timer
 from src.panels.state_machine.WrongStateError import WrongStateError
 
 
 class StateMachine:
-    timer = Timer()
     # Текущий стейт нашей машины
     state: State = None
     # Карта навигации
@@ -19,6 +17,8 @@ class StateMachine:
         self.state = initial_state
         # Устанавливаем карту навигации
         self.source_destinations_map = source_destination_map
+        # Устанавливаем слушатель сессии
+        self.session_lifecycle_handler = SessionLifecycleHandler(self)
 
     # Запуск текущего стейта
     def run_current_state(self) -> State:
@@ -31,19 +31,13 @@ class StateMachine:
         if new_state is None:
             raise WrongStateError
 
+        if self.session_lifecycle_handler.ping():
+            return
+
         # Проверка что навигация разрешена и время активности не прошло
-        if self.__is_valid_change__(new_state) and self.timer.time_has_passed() is False:
+        if self.__is_valid_change__(new_state):
             # Если навигация разрешена, то меняем текущий стейт на тот который выбрал пользователь
             self.state = new_state
-            self.timer.new_time()
-        elif (type(self.state) == AuthorizationState) and self.__is_valid_change__(new_state):
-            self.timer.new_time()
-            self.state = new_state
-        elif self.timer.time_has_passed():
-            print("-" * 45)
-            print("К сожалению, время ожидания истекло.")
-            self.state = AuthorizationState()
-            self.timer.new_time()
         else:
             raise WrongStateError
 
