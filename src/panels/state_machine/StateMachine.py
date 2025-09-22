@@ -1,3 +1,4 @@
+from src.panels.AuthorizationState import AuthorizationState
 from src.panels.LogoutState import LogoutState
 from src.panels.state_machine.SessionLifecycleHandler import SessionLifecycleHandler
 from src.panels.state_machine.State import State
@@ -44,7 +45,7 @@ class StateMachine:
     # Метод проверки возможности изменить состояние
     def __is_valid_change__(self, new_state):
         # Если новый стейт это разлогин, то разрешаем без проверки графа навигации
-        if type(new_state) is LogoutState:
+        if (type(new_state) is LogoutState) or (type(self.state is AuthorizationState)):
             return True
         # Получаем список доступных стейтов для перехода (например для стейта "Initial" будет ["Games", "Gamers"])
         valid_destinations = self.source_destinations_map.get(self.state.get_name())

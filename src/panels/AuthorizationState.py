@@ -12,6 +12,9 @@ class AuthorizationState(State):
     auth_manager = AuthManager()
     session_manager = SessionManager()
     user_repository = UserRepository()
+    def __init__(self, current_state=None):
+        self.current_state = current_state
+
 
     def get_name(self):
         return "AuthorizationState"
@@ -23,6 +26,7 @@ class AuthorizationState(State):
             password = input("Password: ")
 
             # Создаем пустую переменную чтобы в нее записать id найденного пользователя
+            current_user_id = self.auth_manager.user_id
             user_id = None
             try:
                 # Попытка авторизоваться с помощью логина и пароля
@@ -40,7 +44,10 @@ class AuthorizationState(State):
                 break
 
         user_id = self.session_manager.get_user()
-        if self.user_repository.is_role_admin(user_id):
-            return AdminInitial()
+        if self.current_state is not None and (user_id == current_user_id):
+            return self.current_state
         else:
-            return UserInitial()
+            if self.user_repository.is_role_admin(user_id):
+                return AdminInitial()
+            else:
+                return UserInitial()

@@ -16,7 +16,7 @@ class SessionLifecycleHandler:
             return False
         elif self.__is_session_expired__():
             self.__update_time__()
-            self.state_machine.change_state(LogoutState())
+            self.state_machine.change_state(LogoutState(self.state_machine.state))
             return True
         else:
             self.__update_time__()
